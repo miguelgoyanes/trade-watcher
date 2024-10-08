@@ -1,0 +1,22 @@
+{
+  "tasks": {
+    "dev": "deno run -A src/main.ts",
+    "test:fakedata": "deno run -A src/routes.ts",
+    "local:db:up": "docker-compose -f deploy/local-db/docker-compose.yaml -p degentown up --abort-on-container-exit --build",
+    "local:db:down": "docker-compose -f deploy/local-db/docker-compose.yaml -p degentown down --rmi local --remove-orphans",
+    "local:db:nuke": "docker-compose -f deploy/local-db/docker-compose.yaml -p degentown down --rmi local -v --remove-orphans"
+  },
+  "imports": {
+    "@coral-xyz/anchor": "npm:@coral-xyz/anchor@^0.30.1",
+    "@solana/web3.js": "npm:@solana/web3.js@^1.95.3",
+    "@std/assert": "jsr:@std/assert@1",
+    "deno-pg": "https://deno.land/x/postgres@v0.19.3/mod.ts"
+  },
+  "fmt": {
+    "lineWidth": 140,
+    "proseWrap": "preserve"
+  },
+  "lint": {
+    "include": ["src/**/*.ts"]
+  }
+}
